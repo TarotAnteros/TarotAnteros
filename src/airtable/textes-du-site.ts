@@ -17,6 +17,7 @@ const schema = z.array(
 
 export type TTextesDuSite = z.infer<typeof schema>;
 
+// TODO: remove empty lines
 export const textesDuSiteData = textesDuSiteBase("Textes du site")
   .select()
   .all()

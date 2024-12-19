@@ -43,7 +43,7 @@ export default function RootLayout({
           gap="4rem"
           alignItems="center"
           px="10px"
-          py="10px"
+          pb="10px"
         >
           <Navigation />
           {children}
