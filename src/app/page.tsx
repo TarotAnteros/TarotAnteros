@@ -1,28 +1,26 @@
 import { textesDuSiteData } from "@/airtable/textes-du-site";
-import { MD } from "@/components/md";
+import { FormattedMd } from "@/components/formatted-md";
+import { H1 } from "@/components/layout/h1";
+import { H2 } from "@/components/layout/h2";
+import { css } from "@/generated/styled-system/css";
 import { Flex } from "@/generated/styled-system/jsx";
-
-async function Navigation() {
-  const data = await textesDuSiteData;
-  return (
-    <Flex direction="row" gap={"20px"} color={"bg0"}>
-      {data.map((item) => (
-        <a key={item.URI} href={"#" + item.URI}>
-          {item.Titre}
-        </a>
-      ))}
-    </Flex>
-  );
-}
 
 async function Sections() {
   const data = await textesDuSiteData;
   return (
-    <Flex direction="column">
+    <Flex direction="column" gap="3rem">
       {data.map((item) => (
-        <Flex direction="column" key={item.URI}>
-          <h2 id={item.URI}>{item.Titre}</h2>
-          <MD>{item.Contenu}</MD>
+        <Flex direction="column" key={item.URI} gap="2rem">
+          <H2
+            id={item.URI}
+            className={css({
+              fontSize: "1.5rem",
+              fontWeight: "bold",
+            })}
+          >
+            {item.Titre}
+          </H2>
+          <FormattedMd>{item.Contenu}</FormattedMd>
         </Flex>
       ))}
     </Flex>
@@ -31,9 +29,9 @@ async function Sections() {
 
 export default async function Home() {
   return (
-    <Flex direction="column">
-      <Navigation />
+    <>
+      <H1>Tarot Anteros</H1>
       <Sections />
-    </Flex>
+    </>
   );
 }

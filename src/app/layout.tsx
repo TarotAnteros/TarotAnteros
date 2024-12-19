@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { css } from "@/generated/styled-system/css";
+import { Flex } from "@/generated/styled-system/jsx";
+import { Navigation } from "./nav";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,12 +33,21 @@ export default function RootLayout({
           geistSans.variable,
           geistMono.variable,
           css({
-            color: "bg2",
-            backgroundColor: "bg4",
+            color: "c4",
+            backgroundColor: "c0",
           }),
         ].join(" ")}
       >
-        {children}
+        <Flex
+          direction="column"
+          gap="4rem"
+          alignItems="center"
+          px="10px"
+          py="10px"
+        >
+          <Navigation />
+          {children}
+        </Flex>
       </body>
     </html>
   );

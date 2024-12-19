@@ -7,11 +7,22 @@ import rehypeSanitize from "rehype-sanitize";
 import * as prod from "react/jsx-runtime";
 import { ReactNode } from "react";
 import { weakCached } from "@/utils/cached";
+import remarkSmartypants from "remark-smartypants";
 
 function getParser0(components: Partial<Components>) {
   const parser = unified()
     .use(parse)
     .use(breaks)
+    .use(remarkSmartypants, {
+      closingQuotes: {
+        double: "»",
+        single: "’",
+      },
+      openingQuotes: {
+        double: "«",
+        single: "‘",
+      },
+    })
     .use(remarkRehype, {})
     .use(rehypeSanitize)
     .use(rehypeReact, {

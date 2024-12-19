@@ -9,13 +9,26 @@ export default defineConfig({
   jsxFramework: "react",
   theme: {
     extend: {
+      containerSizes: {
+        menu: "44em",
+      },
       tokens: {
+        spacing: {
+          list: {
+            value: "2.5em",
+          },
+        },
+        sizes: {
+          readable: {
+            value: "80ch",
+          },
+        },
         colors: {
-          bg0: { value: "#fdd8a7" },
-          bg1: { value: "#96806c" },
-          bg2: { value: "#886b55" },
-          bg3: { value: "#2e4b47" },
-          bg4: { value: "#23322d" },
+          c0: { value: "#fdd8a7" },
+          c1: { value: "#96806c" },
+          c2: { value: "#886b55" },
+          c3: { value: "#2e4b47" },
+          c4: { value: "#23322d" },
         },
       },
     },
