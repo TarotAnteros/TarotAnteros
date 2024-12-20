@@ -7,32 +7,41 @@ import { rev } from "@/components/layout/rev";
 import clsx from "clsx";
 import { css } from "@/generated/styled-system/css";
 
-const entry = clsx(rev, css({ p: "10px", borderRadius: "5px" }));
+const entry = clsx(
+  rev,
+  css({
+    p: "10px",
+    borderRadius: "5px",
+    textAlign: "center",
+  }),
+);
 
 function NavBar({ entries }: { entries: NavEntry[] }) {
   return (
     <Flex direction="row" justify="center">
       {entries.map(({ URI, Titre: title }) => (
-        <a href={"#" + URI} key={URI} className={entry}>
+        <Link href={URI} key={URI} className={entry}>
           {title}
-        </a>
+        </Link>
       ))}
-      <Link href="/blogue" className={entry}>
-        Blogue
-      </Link>
     </Flex>
   );
 }
 
 export async function Navigation() {
   const data = await textesDuSiteData;
+  const entries = data.map(({ URI, Titre }) => ({
+    URI: "/#" + URI,
+    Titre,
+  }));
+  entries.push({ URI: "/blogue", Titre: "Blogue" });
   return (
     <Cq width="100%" position="sticky" top="0" py="10px" backgroundColor="c0">
       <Box display={{ base: "block", "@/menu": "none" }}>
-        <NavMenu entries={data} />
+        <NavMenu entries={entries} />
       </Box>
       <Box display={{ base: "none", "@/menu": "block" }}>
-        <NavBar entries={data} />
+        <NavBar entries={entries} />
       </Box>
     </Cq>
   );

@@ -36,10 +36,26 @@ export default async function Page({
   if (!post) {
     return <H1>404</H1>;
   }
+  const vignette = post.Vignette?.[0];
   return (
     <Flex direction="column" gap="1rem" width="100%" maxWidth="readable">
       <Back />
-      <H1>{post.Titre}</H1>
+
+      <H1
+        className={css({
+          textAlign: "center",
+        })}
+      >
+        {post.Titre}
+      </H1>
+      {vignette && (
+        <img
+          src={vignette.url}
+          alt={post.Titre}
+          width={vignette.width}
+          height={vignette.height}
+        />
+      )}
       <FormattedMd>{post.Contenu}</FormattedMd>
       <Back />
     </Flex>

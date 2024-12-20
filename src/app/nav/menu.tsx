@@ -12,11 +12,18 @@ import { NavEntry } from "./core";
 import clsx from "clsx";
 import { rev } from "@/components/layout/rev";
 
-const entry = clsx(rev, css({ width: "100%", p: "10px" }));
+const entry = clsx(
+  rev,
+  css({
+    width: "100%",
+    p: "10px",
+    textAlign: "center",
+  }),
+);
 
 export function NavMenu({ entries }: { entries: NavEntry[] }) {
   const [open, setOpen] = useState(false);
-  const close = () => setOpen(false);
+  const close = () => setTimeout(() => setOpen(false), 300);
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger
@@ -48,18 +55,10 @@ export function NavMenu({ entries }: { entries: NavEntry[] }) {
                 height="100%"
               >
                 {entries.map(({ URI, Titre: title }) => (
-                  <a
-                    href={"#" + URI}
-                    key={URI}
-                    onClick={close}
-                    className={entry}
-                  >
+                  <Link href={URI} key={URI} onClick={close} className={entry}>
                     {title}
-                  </a>
+                  </Link>
                 ))}
-                <Link href="/blogue" onClick={close} className={entry}>
-                  Blogue
-                </Link>
               </Flex>
             </Overlay>
           </Dialog.Overlay>

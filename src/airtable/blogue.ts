@@ -11,6 +11,15 @@ const schema = z.array(
         Titre: z.string(),
         Tags: z.array(z.string()).catch(() => []),
         Contenu: z.string(),
+        Vignette: z
+          .array(
+            z.object({
+              url: z.string(),
+              width: z.number(),
+              height: z.number(),
+            }),
+          )
+          .optional(),
       }),
     })
     .transform((item) => ({
