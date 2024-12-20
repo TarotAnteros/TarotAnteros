@@ -3,7 +3,7 @@
 import { FaBars } from "react-icons/fa";
 import * as Dialog from "@radix-ui/react-dialog";
 import { css } from "@/generated/styled-system/css";
-import { Overlay } from "@/components/overlay";
+import { Overlay } from "@/components/layout/overlay";
 import { IoClose } from "react-icons/io5";
 import { Flex, VisuallyHidden } from "@/generated/styled-system/jsx";
 import Link from "next/link";

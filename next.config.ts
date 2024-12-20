@@ -1,8 +1,5 @@
-import { basePath } from "./base-path";
-import type { NextConfig } from "next";
+import withExportImages from "next-export-optimize-images";
 
-const nextConfig: NextConfig = {
-  basePath,
-};
-
-export default nextConfig;
+export default withExportImages({
+  output: "export",
+});

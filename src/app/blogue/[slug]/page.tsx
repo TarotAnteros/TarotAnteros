@@ -1,5 +1,6 @@
 import { blogueData } from "@/airtable/blogue";
 import { FormattedMd } from "@/components/formatted-md";
+import { RemoteImg } from "@/components/img";
 import { H1 } from "@/components/layout/h1";
 import { rev } from "@/components/layout/rev";
 import { css } from "@/generated/styled-system/css";
@@ -30,8 +31,7 @@ export default async function Page({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const slug = (await params).slug;
-  const blogue = await blogueData;
+  const [{ slug }, blogue] = await Promise.all([params, blogueData]);
   const post = blogue.find((post) => post.slug === slug);
   if (!post) {
     return <H1>404</H1>;
@@ -48,14 +48,7 @@ export default async function Page({
       >
         {post.Titre}
       </H1>
-      {vignette && (
-        <img
-          src={vignette.url}
-          alt={post.Titre}
-          width={vignette.width}
-          height={vignette.height}
-        />
-      )}
+      {vignette && <RemoteImg src={vignette.url} alt={post.Titre} />}
       <FormattedMd>{post.Contenu}</FormattedMd>
       <Back />
     </Flex>
