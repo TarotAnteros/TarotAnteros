@@ -5,21 +5,12 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { css } from "@/generated/styled-system/css";
 import { Overlay } from "@/components/layout/overlay";
 import { IoClose } from "react-icons/io5";
-import { Flex, VisuallyHidden } from "@/generated/styled-system/jsx";
+import { Box, Flex, VisuallyHidden } from "@/generated/styled-system/jsx";
 import Link from "next/link";
 import { useState } from "react";
 import { NavEntry } from "./core";
 import clsx from "clsx";
 import { rev } from "@/components/layout/rev";
-
-const entry = clsx(
-  rev,
-  css({
-    width: "100%",
-    p: "10px",
-    textAlign: "center",
-  }),
-);
 
 export function NavMenu({ entries }: { entries: NavEntry[] }) {
   const [open, setOpen] = useState(false);
@@ -38,28 +29,49 @@ export function NavMenu({ entries }: { entries: NavEntry[] }) {
       <Dialog.Portal>
         <Dialog.Content>
           <Dialog.Overlay asChild>
-            <Overlay px="10px">
-              <Dialog.Close className={entry}>
-                <VisuallyHidden>
-                  <Dialog.Title>Menu</Dialog.Title>
-                  <Dialog.Description>Navigation Menu</Dialog.Description>
-                </VisuallyHidden>
-                <Flex direction="row" justifyContent="flex-end">
-                  <IoClose />
-                </Flex>
-              </Dialog.Close>
+            <Overlay>
               <Flex
                 direction="column"
                 align="center"
                 justifyContent="center"
                 height="100%"
               >
-                {entries.map(({ URI, Titre: title }) => (
-                  <Link href={URI} key={URI} onClick={close} className={entry}>
-                    {title}
-                  </Link>
-                ))}
+                <Flex direction="column">
+                  {entries.map(({ URI, Titre: title }) => (
+                    <Link
+                      href={URI}
+                      key={URI}
+                      onClick={close}
+                      className={clsx(
+                        rev,
+                        css({
+                          p: "10px",
+                          width: "100%",
+                        }),
+                      )}
+                    >
+                      {title}
+                    </Link>
+                  ))}
+                </Flex>
               </Flex>
+              <Box position="absolute" top="0" width="100%">
+                <Dialog.Close className={css({ width: "100%" })}>
+                  <VisuallyHidden>
+                    <Dialog.Title>Menu</Dialog.Title>
+                    <Dialog.Description>Navigation Menu</Dialog.Description>
+                  </VisuallyHidden>
+                  <Flex
+                    direction="row"
+                    justifyContent="flex-end"
+                    py="20px"
+                    px="10px"
+                    className={rev}
+                  >
+                    <IoClose />
+                  </Flex>
+                </Dialog.Close>
+              </Box>
             </Overlay>
           </Dialog.Overlay>
         </Dialog.Content>

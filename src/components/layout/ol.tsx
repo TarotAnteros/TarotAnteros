@@ -2,7 +2,7 @@ import { styled } from "@/generated/styled-system/jsx";
 
 export const Ol = styled("ol", {
   base: {
-    marginLeft: "list",
+    pl: "list",
     ":where(ul,ol) :where(ul,ol) :where(ul,ol) &": {
       listStyleType: "decimal",
     },

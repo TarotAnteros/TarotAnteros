@@ -15,7 +15,7 @@ const schema = z.array(
     .transform((item) => item.fields),
 );
 
-export type TTextesDuSite = z.infer<typeof schema>;
+export type TTexteDuSite = z.infer<typeof schema>[0];
 
 // TODO: remove empty lines
 export const textesDuSiteData = textesDuSiteBase("Textes du site")

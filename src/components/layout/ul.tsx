@@ -2,8 +2,7 @@ import { styled } from "@/generated/styled-system/jsx";
 
 export const Ul = styled("ul", {
   base: {
-    marginLeft: "list",
-    maxWidth: "readable",
+    pl: "list",
     ":where(ul,ol) :where(ul,ol) :where(ul,ol) &": {
       listStyleType: "disc",
     },

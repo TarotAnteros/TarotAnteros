@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { css } from "@/generated/styled-system/css";
-import { Flex } from "@/generated/styled-system/jsx";
 import { Navigation } from "./nav";
 
 export const metadata: Metadata = {
@@ -15,23 +14,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html
+      lang="fr"
+      className={css({
+        fontSize: "133.33%",
+        color: "c4",
+        backgroundColor: "c0",
+        fontFamily: "printclearly",
+      })}
+    >
       <body
         className={css({
-          color: "c4",
-          backgroundColor: "c0",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          width: "100%",
+          gap: "1rem",
         })}
       >
-        <Flex
-          direction="column"
-          gap="4rem"
-          alignItems="center"
-          px="10px"
-          pb="10px"
-        >
-          <Navigation />
-          {children}
-        </Flex>
+        <Navigation />
+        {children}
       </body>
     </html>
   );

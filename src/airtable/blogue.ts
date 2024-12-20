@@ -9,7 +9,7 @@ const schema = z.array(
     .object({
       fields: z.object({
         Titre: z.string(),
-        Tags: z.array(z.string()).catch(() => []),
+        Tags: z.array(z.string()).default([]),
         Contenu: z.string(),
         Vignette: z
           .array(
@@ -19,7 +19,7 @@ const schema = z.array(
               height: z.number(),
             }),
           )
-          .optional(),
+          .default([]),
       }),
     })
     .transform((item) => ({
@@ -28,9 +28,9 @@ const schema = z.array(
     })),
 );
 
-export type TBlogue = z.infer<typeof schema>;
+export type TPost = z.infer<typeof schema>[0];
 
-// TODO: remove empty lines
+// TODO: remove empty entries
 export const blogueData = textesDuSiteBase("Blogue")
   .select()
   .all()

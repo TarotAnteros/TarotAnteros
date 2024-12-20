@@ -8,10 +8,12 @@ import * as prod from "react/jsx-runtime";
 import { ReactNode } from "react";
 import { weakCached } from "@/utils/cached";
 import remarkSmartypants from "remark-smartypants";
+import remarkGfm from "remark-gfm";
 
 function getParser0(components: Partial<Components>) {
   const parser = unified()
     .use(parse)
+    .use(remarkGfm)
     .use(breaks)
     .use(remarkSmartypants, {
       closingQuotes: {
