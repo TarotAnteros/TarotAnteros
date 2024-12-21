@@ -7,6 +7,9 @@ const textesDuSiteBase = airtable.base("appGoJm0yLoMjVSeC");
 const schema = z.array(
   z
     .object({
+      _rawJson: z.object({
+        createdTime: z.string(),
+      }),
       fields: z.object({
         Titre: z.string(),
         Tags: z.array(z.string()).default([]),
@@ -25,6 +28,7 @@ const schema = z.array(
     .transform((item) => ({
       ...item.fields,
       slug: slugify(item.fields.Titre),
+      date: item._rawJson.createdTime,
     })),
 );
 

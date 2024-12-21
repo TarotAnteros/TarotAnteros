@@ -9,8 +9,9 @@ import { ReactNode } from "react";
 import { weakCached } from "@/utils/cached";
 import remarkSmartypants from "remark-smartypants";
 import remarkGfm from "remark-gfm";
+import rehypeStringify from "rehype-stringify";
 
-function getParser0(components: Partial<Components>) {
+function createParser() {
   const parser = unified()
     .use(parse)
     .use(remarkGfm)
@@ -26,13 +27,17 @@ function getParser0(components: Partial<Components>) {
       },
     })
     .use(remarkRehype, {})
-    .use(rehypeSanitize)
-    .use(rehypeReact, {
-      Fragment: prod.Fragment,
-      jsx: prod.jsx,
-      jsxs: prod.jsxs,
-      components,
-    });
+    .use(rehypeSanitize);
+  return parser;
+}
+
+function getParser0(components: Partial<Components>) {
+  const parser = createParser().use(rehypeReact, {
+    Fragment: prod.Fragment,
+    jsx: prod.jsx,
+    jsxs: prod.jsxs,
+    components,
+  });
   return parser;
 }
 const getParser = weakCached(getParser0);
@@ -52,6 +57,11 @@ export async function MD({
 
 function Frag({ children }: { children?: ReactNode }) {
   return <>{children}</>;
+}
+
+export async function parseMD(md: string) {
+  const result = await createParser().use(rehypeStringify).process(md);
+  return String(result);
 }
 
 const frag = { p: Frag };

@@ -6,7 +6,6 @@ import { NavEntry } from "./core";
 import { rev } from "@/components/layout/rev";
 import clsx from "clsx";
 import { css } from "@/generated/styled-system/css";
-import { blogueData } from "@/airtable/blogue";
 
 const entry = clsx(
   rev,
@@ -30,12 +29,12 @@ function NavBar({ entries }: { entries: NavEntry[] }) {
 }
 
 export async function Navigation() {
-  const [data, posts] = await Promise.all([textesDuSiteData, blogueData]);
-  const entries = data.map(({ URI, Titre }) => ({
+  const textesDuSite = await textesDuSiteData;
+  const entries = textesDuSite.map(({ URI, Titre }) => ({
     URI: "/#" + URI,
     Titre,
   }));
-  if (posts.length) entries.push({ URI: "/blogue", Titre: "Blogue" });
+  entries.push({ URI: "/blogue", Titre: "Blogue" });
   return (
     <Cq
       width="100%"

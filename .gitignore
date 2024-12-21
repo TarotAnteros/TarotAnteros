@@ -44,3 +44,5 @@ styled-system
 styled-system-studio
 
 generated
+public
+!public/.gitkeep

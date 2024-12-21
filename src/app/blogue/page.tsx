@@ -8,7 +8,8 @@ import { Box, Flex } from "@/generated/styled-system/jsx";
 import clsx from "clsx";
 import RemoteImage from "next-export-optimize-images/remote-image";
 import Link from "next/link";
-import { PostPage } from "./post-page";
+import { FaRss } from "react-icons/fa";
+import { buttonText } from "@/components/layout/button-text";
 
 const firstItem = css({
   "& > *": {
@@ -19,7 +20,7 @@ const firstItem = css({
   },
 });
 
-export function FirstPost({ post }: { post: TPost }) {
+function FirstPost({ post }: { post: TPost }) {
   return (
     <Box
       className={css({
@@ -35,15 +36,7 @@ export function FirstPost({ post }: { post: TPost }) {
             <FormattedMd>{post.Contenu}</FormattedMd>
           </Box>
           <Box flexGrow={1} />
-          <Link
-            href={`/blogue/${post.slug}`}
-            className={css({
-              fontWeight: "bold",
-              color: "c2",
-              fontSize: "80%",
-              textTransform: "uppercase",
-            })}
-          >
+          <Link href={`/blogue/${post.slug}`} className={buttonText}>
             lire la suite
           </Link>
         </Flex>
@@ -66,7 +59,7 @@ export function FirstPost({ post }: { post: TPost }) {
   );
 }
 
-export function Post({ post }: { post: TPost }) {
+function Post({ post }: { post: TPost }) {
   return (
     <Link
       href={`/blogue/${post.slug}`}
@@ -106,7 +99,7 @@ export function Post({ post }: { post: TPost }) {
   );
 }
 
-export function Posts({ posts }: { posts: TPost[] }) {
+function Posts({ posts }: { posts: TPost[] }) {
   if (posts.length === 0) {
     return <Box>À venir</Box>;
   }
@@ -125,21 +118,32 @@ export function Posts({ posts }: { posts: TPost[] }) {
 
 export default async function Page() {
   const posts = await blogueData;
-  if (posts.length === 1) return <PostPage slug={posts[0].slug} />;
   return (
-    <MainColumn
-      className={css({
-        gap: "2rem",
-      })}
-    >
-      <H1
-        className={css({
-          textAlign: "center",
-        })}
-      >
-        Blogue
-      </H1>
+    <MainColumn>
+      <Flex direction="row" align="center" justifyContent="space-between">
+        <H1>Blogue</H1>
+        <RSSLink />
+      </Flex>
       <Posts posts={posts} />
     </MainColumn>
+  );
+}
+
+function RSSLink() {
+  return (
+    <a
+      href="/rss.xml"
+      rel="noreferrer"
+      target="_blank"
+      className={css({
+        display: "flex",
+        alignItems: "center",
+        gap: "5px",
+        color: "c2",
+      })}
+    >
+      <Box className={css({ fontSize: "80%" })}>RSS</Box>
+      <FaRss size="20px" />
+    </a>
   );
 }

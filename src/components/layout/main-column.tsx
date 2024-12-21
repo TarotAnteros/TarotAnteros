@@ -14,6 +14,7 @@ export function MainColumn({
         direction="column"
         width="100%"
         maxWidth="readable"
+        gap="2rem"
         className={className}
       >
         {children}
