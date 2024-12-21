@@ -1,4 +1,4 @@
 export interface NavEntry {
-  URI: string;
-  Titre: string;
+	URI: string
+	Titre: string
 }
