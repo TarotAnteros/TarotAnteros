@@ -1,9 +1,9 @@
 import { blogueData } from '@/airtable/blogue'
-import { FormattedMd } from '@/components/formatted-md'
-import { buttonText } from '@/components/layout/button-text'
-import { H1 } from '@/components/layout/h1'
-import { MainColumn } from '@/components/layout/main-column'
-import { parseMD } from '@/components/md'
+import { H1 } from '@/components/elements/h1'
+import { buttonText } from '@/components/layouts/button-text'
+import { MainColumn } from '@/components/layouts/main-column'
+import { parseMD } from '@/components/md/core'
+import { FormattedMd } from '@/components/md/formatted'
 import { css } from '@/generated/styled-system/css'
 import { Box } from '@/generated/styled-system/jsx'
 import { writeFile } from 'fs/promises'
@@ -20,7 +20,7 @@ function Back() {
 				color: 'link',
 				display: 'flex',
 				flexDirection: 'row',
-				gap: '10px',
+				gap: '5px',
 			})}
 			href="/blogue"
 		>
@@ -62,7 +62,7 @@ async function PostPage({ slug }: { slug: string }) {
 			<Box>
 				<FormattedMd>{post.Contenu}</FormattedMd>
 			</Box>
-			{posts.length > 1 && <Back />}
+			<Back />
 		</MainColumn>
 	)
 }

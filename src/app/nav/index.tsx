@@ -1,5 +1,5 @@
 import { textesDuSiteData } from '@/airtable/textes-du-site'
-import { rev } from '@/components/layout/rev'
+import { rev } from '@/components/layouts/rev'
 import { css } from '@/generated/styled-system/css'
 import { Box, Cq, Flex } from '@/generated/styled-system/jsx'
 import clsx from 'clsx'

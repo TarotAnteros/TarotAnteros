@@ -23,7 +23,8 @@ export default defineConfig({
 			textStyles: {
 				heading: {
 					value: {
-						fontFamily: '',
+						fontFamily: 'heading',
+						fontWeight: 'bold',
 					},
 				},
 			},
@@ -51,7 +52,7 @@ export default defineConfig({
 					},
 				},
 				fontSizes: {
-					small: { value: '80%' },
+					small: { value: '0.83rem' },
 				},
 				sizes: {
 					readable: {

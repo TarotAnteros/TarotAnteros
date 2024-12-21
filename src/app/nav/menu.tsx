@@ -1,7 +1,6 @@
 'use client'
 
-import { Overlay } from '@/components/layout/overlay'
-import { rev } from '@/components/layout/rev'
+import { rev } from '@/components/layouts/rev'
 import { css } from '@/generated/styled-system/css'
 import { Box, Flex, VisuallyHidden } from '@/generated/styled-system/jsx'
 import * as Dialog from '@radix-ui/react-dialog'
@@ -30,7 +29,7 @@ export function NavMenu({ entries }: { entries: NavEntry[] }) {
 			<Dialog.Portal>
 				<Dialog.Content>
 					<Dialog.Overlay asChild>
-						<Overlay>
+						<Dialog.Overlay>
 							<Flex
 								align="center"
 								direction="column"
@@ -73,7 +72,7 @@ export function NavMenu({ entries }: { entries: NavEntry[] }) {
 									</Flex>
 								</Dialog.Close>
 							</Box>
-						</Overlay>
+						</Dialog.Overlay>
 					</Dialog.Overlay>
 				</Dialog.Content>
 			</Dialog.Portal>

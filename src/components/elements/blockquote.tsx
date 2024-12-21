@@ -5,7 +5,7 @@ export const Blockquote = styled('blockquote', {
 		backgroundColor: 'bg1',
 		borderColor: 'bg2',
 		borderLeftWidth: '4px',
-		fontSize: '85%',
+		fontSize: 'small',
 		pl: 'calc(1rem - 4px)',
 	},
 })

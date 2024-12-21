@@ -1,5 +1,3 @@
-import type { Metadata } from 'next'
-
 import { css } from '@/generated/styled-system/css'
 
 import './globals.css'
@@ -12,13 +10,13 @@ import { Navigation } from './nav'
 
 const callingStone = localFont({
 	display: 'block',
-	src: '../fonts/callingstone.ttf',
+	src: './fonts/callingstone.ttf',
 	variable: '--font-callingstone',
 })
 
 const printClearly = localFont({
 	display: 'block',
-	src: '../fonts/princ.ttf',
+	src: './fonts/princ.ttf',
 	variable: '--font-printclearly',
 })
 
@@ -45,7 +43,7 @@ export default function RootLayout({
 			)}
 			lang="fr"
 		>
-      <title>Tarot Anteros</title>
+			<title>Tarot Anteros</title>
 			<body
 				className={css({
 					alignItems: 'center',

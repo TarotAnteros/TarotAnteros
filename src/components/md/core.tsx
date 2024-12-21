@@ -1,5 +1,4 @@
 import { weakCached } from '@/utils/cached'
-import { ReactNode } from 'react'
 import * as prod from 'react/jsx-runtime'
 import rehypeReact, { Components } from 'rehype-react'
 import rehypeSanitize from 'rehype-sanitize'
@@ -44,16 +43,7 @@ export async function MD({
 	return result
 }
 
-function Frag({ children }: { children?: ReactNode }) {
-	return <>{children}</>
-}
-
 export async function parseMD(md: string) {
 	const result = await createParser().use(rehypeStringify).process(md)
 	return String(result)
-}
-
-const frag = { p: Frag }
-export function MDFrag({ children }: { children: string }) {
-	return MD({ children, components: frag })
 }
