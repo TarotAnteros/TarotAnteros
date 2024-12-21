@@ -8,10 +8,9 @@ import { MD } from '@/components/md/core'
 import { mdComponents } from '@/components/md/formatted'
 import { css } from '@/generated/styled-system/css'
 import { Box } from '@/generated/styled-system/jsx'
+import clsx from 'clsx'
 
-const darkBackground = css({
-	backgroundColor: 'bg1',
-})
+import { Target } from './nav'
 
 const sectionComponents = {
 	...mdComponents,
@@ -29,8 +28,14 @@ async function Sections() {
 		<>
 			{data.map((item, i) => (
 				<Box key={item.URI}>
-					<Box bottom={'2.33rem'} id={item.URI} position="relative" />
-					<Section className={i % 2 ? darkBackground : undefined}>
+					<Target id={item.URI} />
+					<Section
+						className={clsx({
+							[css({
+								backgroundColor: 'c2/30',
+							})]: i % 2,
+						})}
+					>
 						<H2>{item.Titre}</H2>
 						<SectionMD>{item.Contenu}</SectionMD>
 					</Section>

@@ -21,9 +21,52 @@ export default defineConfig({
 				menu: '44em',
 			},
 			textStyles: {
-				heading: {
+				button: {
+					value: {
+						fontSize: 'small',
+						fontWeight: 'bold',
+						textTransform: 'uppercase',
+					},
+				},
+				h1: {
 					value: {
 						fontFamily: 'heading',
+						fontSize: '2rem',
+						fontWeight: 'bold',
+					},
+				},
+				h2: {
+					value: {
+						fontFamily: 'heading',
+						fontSize: '1.5rem',
+						fontWeight: 'bold',
+					},
+				},
+				h3: {
+					value: {
+						fontFamily: 'heading',
+						fontSize: '1.17rem',
+						fontWeight: 'bold',
+					},
+				},
+				h4: {
+					value: {
+						fontFamily: 'heading',
+						fontSize: '1rem',
+						fontWeight: 'bold',
+					},
+				},
+				h5: {
+					value: {
+						fontFamily: 'heading',
+						fontSize: 'small',
+						fontWeight: 'bold',
+					},
+				},
+				h6: {
+					value: {
+						fontFamily: 'heading',
+						fontSize: '0.67rem',
 						fontWeight: 'bold',
 					},
 				},
@@ -32,14 +75,6 @@ export default defineConfig({
 				colors: {
 					...palette,
 					bg0: palette.c0,
-					bg1: {
-						value:
-							'color-mix(in oklab, var(--colors-c2) 30%, var(--colors-c0))',
-					},
-					bg2: {
-						value:
-							'color-mix(in oklab, var(--colors-c2) 50%, var(--colors-c0))',
-					},
 					link: palette.c2,
 					text: palette.c4,
 				},

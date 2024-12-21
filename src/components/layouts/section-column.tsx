@@ -1,28 +1,45 @@
-import { Box, Flex, FlexProps } from '@/generated/styled-system/jsx'
+import { Box, BoxProps, styled, VStack } from '@/generated/styled-system/jsx'
 import { ReactNode } from 'react'
+
+const Inner = styled('div', {
+	base: {
+		display: 'flex',
+		flexDirection: 'column',
+		py: '10px',
+		width: '100%',
+	},
+})
 
 export function SectionColumn({
 	children,
 	...props
-}: FlexProps & { children: ReactNode }) {
+}: BoxProps & { children: ReactNode }) {
 	return (
-		<Flex alignItems="center" flexDirection="column" width="100%">
-			<Flex direction="column" py="10px" width="100%" {...props}>
-				{children}
-			</Flex>
-		</Flex>
+		<VStack width="100%">
+			<Inner {...props}>{children}</Inner>
+		</VStack>
 	)
 }
+
+const Outer = styled('div', {
+	base: {
+		alignItems: 'center',
+		display: 'flex',
+		flexDirection: 'column',
+		px: '10px',
+		py: '1rem',
+	},
+})
 
 export function Section({
 	children,
 	...props
-}: FlexProps & {
+}: BoxProps & {
 	children: ReactNode
 }) {
 	return (
-		<Flex alignItems="center" direction="column" px="10px" py="1rem" {...props}>
+		<Outer {...props}>
 			<Box maxWidth="readable">{children}</Box>
-		</Flex>
+		</Outer>
 	)
 }

@@ -1,31 +1,32 @@
 import { textesDuSiteData } from '@/airtable/textes-du-site'
-import { rev } from '@/components/layouts/rev'
+import { A } from '@/components/elements/a'
 import { css } from '@/generated/styled-system/css'
-import { Box, Cq, Flex } from '@/generated/styled-system/jsx'
-import clsx from 'clsx'
-import Link from 'next/link'
+import { Box, Cq, HStack, styled } from '@/generated/styled-system/jsx'
 
 import { NavEntry } from './core'
 import { NavMenu } from './menu'
-
-const entry = clsx(
-	rev,
-	css({
-		borderRadius: '5px',
-		p: '10px',
-		textAlign: 'center',
-	}),
-)
+import { navItem } from './nav-item'
 
 function NavBar({ entries }: { entries: NavEntry[] }) {
 	return (
-		<Flex direction="row" justify="center">
+		<HStack gap="0px" justify="center">
 			{entries.map(({ Titre: title, URI }) => (
-				<Link className={entry} href={URI} key={URI}>
+				<A
+					className={css(
+						{
+							borderRadius: '5px',
+							p: '10px',
+							textAlign: 'center',
+						},
+						navItem,
+					)}
+					href={URI}
+					key={URI}
+				>
 					{title}
-				</Link>
+				</A>
 			))}
-		</Flex>
+		</HStack>
 	)
 }
 
@@ -54,3 +55,10 @@ export async function Navigation() {
 		</Cq>
 	)
 }
+
+export const Target = styled('div', {
+	base: {
+		bottom: '2.33rem',
+		position: 'relative',
+	},
+})

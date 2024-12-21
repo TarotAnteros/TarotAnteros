@@ -1,8 +1,13 @@
-import { styled } from '@/generated/styled-system/jsx'
+import Link from 'next/link'
+import { ComponentProps } from 'react'
 
-export const A = styled('a', {
-	base: {
-		color: 'link',
-		fontWeight: 'bold',
-	},
-})
+// TODO: refine
+export function A({ href, ...props }: ComponentProps<'a'>) {
+	if (
+		typeof href === 'string' &&
+		(href.startsWith('/') || href.startsWith('.'))
+	) {
+		return <Link href={href} {...props} />
+	}
+	return <a {...props} href={href} target="_blank" />
+}

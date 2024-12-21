@@ -1,22 +1,13 @@
-import { Box, BoxProps } from '@/generated/styled-system/jsx'
-import { ReactNode } from 'react'
+import { styled } from '@/generated/styled-system/jsx'
 
-export function Overlay({
-	children,
-	...props
-}: BoxProps & { children: ReactNode }) {
-	return (
-		<Box
-			backgroundColor="bg0"
-			bottom="0"
-			left="0"
-			position="fixed"
-			right="0"
-			top="0"
-			zIndex="100"
-			{...props}
-		>
-			{children}
-		</Box>
-	)
-}
+export const Overlay = styled('div', {
+	base: {
+		backgroundColor: 'bg0',
+		bottom: '0',
+		left: '0',
+		position: 'fixed',
+		right: '0',
+		top: '0',
+		zIndex: '100',
+	},
+})

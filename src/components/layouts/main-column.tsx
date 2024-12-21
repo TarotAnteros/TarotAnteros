@@ -1,23 +1,25 @@
-import { Flex, FlexProps } from '@/generated/styled-system/jsx'
+import { BoxProps, styled, VStack } from '@/generated/styled-system/jsx'
 import { ReactNode } from 'react'
+
+const Inner = styled('div', {
+	base: {
+		display: 'flex',
+		flexDirection: 'column',
+		gap: '2rem',
+		maxWidth: 'readable',
+		width: '100%',
+	},
+})
 
 export function MainColumn({
 	children,
 	...props
-}: FlexProps & {
+}: BoxProps & {
 	children: ReactNode
 }) {
 	return (
-		<Flex alignItems="center" flexDirection="column" p="10px" width="100%">
-			<Flex
-				direction="column"
-				gap="2rem"
-				maxWidth="readable"
-				width="100%"
-				{...props}
-			>
-				{children}
-			</Flex>
-		</Flex>
+		<VStack p="10px" width="100%">
+			<Inner {...props}>{children}</Inner>
+		</VStack>
 	)
 }

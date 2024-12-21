@@ -1,16 +1,27 @@
 'use client'
 
-import { rev } from '@/components/layouts/rev'
+import { A } from '@/components/elements/a'
+import { Overlay } from '@/components/layouts/overlay'
 import { css } from '@/generated/styled-system/css'
-import { Box, Flex, VisuallyHidden } from '@/generated/styled-system/jsx'
+import {
+	Box,
+	HStack,
+	VisuallyHidden,
+	VStack,
+} from '@/generated/styled-system/jsx'
 import * as Dialog from '@radix-ui/react-dialog'
-import clsx from 'clsx'
-import Link from 'next/link'
 import { useState } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { IoClose } from 'react-icons/io5'
 
 import { NavEntry } from './core'
+import { navItem } from './nav-item'
+
+const atop = css({
+	position: 'absolute',
+	top: '0',
+	width: '100%',
+})
 
 export function NavMenu({ entries }: { entries: NavEntry[] }) {
 	const [open, setOpen] = useState(false)
@@ -30,48 +41,49 @@ export function NavMenu({ entries }: { entries: NavEntry[] }) {
 				<Dialog.Content>
 					<Dialog.Overlay asChild>
 						<Dialog.Overlay>
-							<Flex
-								align="center"
+							<Overlay
+								alignItems="center"
 								direction="column"
+								display="flex"
 								height="100%"
 								justifyContent="center"
 							>
-								<Flex direction="column">
+								<VStack gap="0">
 									{entries.map(({ Titre: title, URI }) => (
-										<Link
-											className={clsx(
-												rev,
-												css({
+										<A
+											className={css(
+												{
 													p: '10px',
 													width: '100%',
-												}),
+												},
+												navItem,
 											)}
 											href={URI}
 											key={URI}
 											onClick={close}
 										>
 											{title}
-										</Link>
+										</A>
 									))}
-								</Flex>
-							</Flex>
-							<Box position="absolute" top="0" width="100%">
-								<Dialog.Close className={css({ width: '100%' })}>
-									<VisuallyHidden>
-										<Dialog.Title>Menu</Dialog.Title>
-										<Dialog.Description>Navigation Menu</Dialog.Description>
-									</VisuallyHidden>
-									<Flex
-										className={rev}
-										direction="row"
-										justifyContent="flex-end"
-										px="10px"
-										py="20px"
-									>
-										<IoClose />
-									</Flex>
-								</Dialog.Close>
-							</Box>
+								</VStack>
+								<Box className={atop}>
+									<Dialog.Close className={css({ width: '100%' })}>
+										<HStack
+											className={css(navItem)}
+											gap="0px"
+											justify="end"
+											px="10px"
+											py="20px"
+										>
+											<VisuallyHidden>
+												<Dialog.Title>Menu</Dialog.Title>
+												<Dialog.Description>Navigation Menu</Dialog.Description>
+											</VisuallyHidden>
+											<IoClose />
+										</HStack>
+									</Dialog.Close>
+								</Box>
+							</Overlay>
 						</Dialog.Overlay>
 					</Dialog.Overlay>
 				</Dialog.Content>

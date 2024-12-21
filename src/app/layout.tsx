@@ -3,6 +3,7 @@ import { css } from '@/generated/styled-system/css'
 import './globals.css'
 
 import { Box } from '@/generated/styled-system/jsx'
+import { siteTitle } from '@/utils/meta'
 import clsx from 'clsx'
 import localFont from 'next/font/local'
 
@@ -33,6 +34,10 @@ export default function RootLayout({
 		<html
 			className={clsx(
 				css({
+					'& a, & button': {
+						color: 'link',
+						fontWeight: 'bold',
+					},
 					backgroundColor: 'bg0',
 					color: 'text',
 					fontFamily: 'text',
@@ -43,7 +48,7 @@ export default function RootLayout({
 			)}
 			lang="fr"
 		>
-			<title>Tarot Anteros</title>
+			<title>{siteTitle}</title>
 			<body
 				className={css({
 					alignItems: 'center',
