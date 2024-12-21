@@ -1,16 +1,26 @@
 import type { Metadata } from 'next'
 
+import { css } from '@/generated/styled-system/css'
+
 import './globals.css'
 
-import { css } from '@/generated/styled-system/css'
 import { Box } from '@/generated/styled-system/jsx'
+import clsx from 'clsx'
+import localFont from 'next/font/local'
 
 import { Navigation } from './nav'
 
-export const metadata: Metadata = {
-	description: 'Site pour Lectures de Tarot',
-	title: 'Tarot Anteros',
-}
+const callingStone = localFont({
+	display: 'block',
+	src: '../fonts/callingstone.ttf',
+	variable: '--font-callingstone',
+})
+
+const printClearly = localFont({
+	display: 'block',
+	src: '../fonts/princ.ttf',
+	variable: '--font-printclearly',
+})
 
 function Credits() {
 	return <Box fontSize="small">crédits</Box>
@@ -23,14 +33,19 @@ export default function RootLayout({
 }>) {
 	return (
 		<html
-			className={css({
-				backgroundColor: 'bg0',
-				color: 'text',
-				fontFamily: 'text',
-				fontSize: '133.33%',
-			})}
+			className={clsx(
+				css({
+					backgroundColor: 'bg0',
+					color: 'text',
+					fontFamily: 'text',
+					fontSize: '130%',
+				}),
+				callingStone.variable,
+				printClearly.variable,
+			)}
 			lang="fr"
 		>
+      <title>Tarot Anteros</title>
 			<body
 				className={css({
 					alignItems: 'center',

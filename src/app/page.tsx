@@ -15,9 +15,9 @@ async function Sections() {
 	return (
 		<>
 			{data.map((item, i) => (
-				<Box className={i % 2 ? darkBackground : undefined} key={item.URI}>
-					<Box bottom={['61px', '92px']} id={item.URI} position="relative" />
-					<Section>
+				<Box key={item.URI}>
+					<Box bottom={'2.33rem'} id={item.URI} position="relative" />
+					<Section className={i % 2 ? darkBackground : undefined}>
 						<H2>{item.Titre}</H2>
 						<FormattedMd>{item.Contenu}</FormattedMd>
 					</Section>

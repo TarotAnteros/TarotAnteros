@@ -8,7 +8,6 @@ import breaks from 'remark-breaks'
 import remarkGfm from 'remark-gfm'
 import parse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
-import remarkSmartypants from 'remark-smartypants'
 import { unified } from 'unified'
 
 function createParser() {
@@ -16,16 +15,6 @@ function createParser() {
 		.use(parse)
 		.use(remarkGfm)
 		.use(breaks)
-		.use(remarkSmartypants, {
-			closingQuotes: {
-				double: '»',
-				single: '’',
-			},
-			openingQuotes: {
-				double: '«',
-				single: '‘',
-			},
-		})
 		.use(remarkRehype, {})
 		.use(rehypeSanitize)
 	return parser

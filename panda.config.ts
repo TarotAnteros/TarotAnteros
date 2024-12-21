@@ -10,24 +10,6 @@ const palette = {
 
 export default defineConfig({
 	exclude: ['./generated/**/*'],
-	globalFontface: {
-		Callingstone: {
-			fontDisplay: 'block',
-			fontStyle: 'normal',
-			fontWeight: '400',
-			src: './src/fonts/callingstone.ttf',
-		},
-		PrintClearly: {
-			fontDisplay: 'block',
-			fontStyle: 'normal',
-			fontWeight: '400',
-			src: './src/fonts/princ.ttf',
-		},
-	},
-	globalVars: {
-		'--font-callingstone': 'Callingstone',
-		'--font-printclearly': 'PrintClearly',
-	},
 	include: ['./src/**/*.{js,jsx,ts,tsx}'],
 	jsxFramework: 'react',
 	outdir: 'src/generated/styled-system',
