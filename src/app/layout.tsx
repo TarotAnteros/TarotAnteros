@@ -3,12 +3,17 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 import { css } from '@/generated/styled-system/css'
+import { Box } from '@/generated/styled-system/jsx'
 
 import { Navigation } from './nav'
 
 export const metadata: Metadata = {
 	description: 'Site pour Lectures de Tarot',
 	title: 'Tarot Anteros',
+}
+
+function Credits() {
+	return <Box fontSize="small">crédits</Box>
 }
 
 export default function RootLayout({
@@ -19,9 +24,9 @@ export default function RootLayout({
 	return (
 		<html
 			className={css({
-				backgroundColor: 'c0',
-				color: 'c4',
-				fontFamily: 'printclearly',
+				backgroundColor: 'bg0',
+				color: 'text',
+				fontFamily: 'text',
 				fontSize: '133.33%',
 			})}
 			lang="fr"
@@ -37,6 +42,7 @@ export default function RootLayout({
 			>
 				<Navigation />
 				{children}
+				<Credits />
 			</body>
 		</html>
 	)

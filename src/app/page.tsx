@@ -1,14 +1,13 @@
 import { textesDuSiteData } from '@/airtable/textes-du-site'
 import { FormattedMd } from '@/components/formatted-md'
-import { AltColumn, Section } from '@/components/layout/alt-column'
 import { H1 } from '@/components/layout/h1'
 import { H2 } from '@/components/layout/h2'
+import { Section, SectionColumn } from '@/components/layout/section-column'
 import { css } from '@/generated/styled-system/css'
 import { Box } from '@/generated/styled-system/jsx'
 
 const darkBackground = css({
-	backgroundColor:
-		'color-mix(in oklab, var(--colors-c2) 20%, var(--colors-c0))',
+	backgroundColor: 'bg1',
 })
 
 async function Sections() {
@@ -30,11 +29,11 @@ async function Sections() {
 
 export default async function Home() {
 	return (
-		<AltColumn>
+		<SectionColumn>
 			<Section>
 				<H1>Tarot Anteros</H1>
 			</Section>
 			<Sections />
-		</AltColumn>
+		</SectionColumn>
 	)
 }

@@ -17,7 +17,7 @@ function Back() {
 		<Link
 			className={css({
 				alignItems: 'center',
-				color: 'c2',
+				color: 'link',
 				display: 'flex',
 				flexDirection: 'row',
 				gap: '10px',

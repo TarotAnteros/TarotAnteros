@@ -38,7 +38,7 @@ export async function Navigation() {
 	entries.push({ Titre: 'Blogue', URI: '/blogue' })
 	return (
 		<Cq
-			backgroundColor="c0"
+			backgroundColor="bg0"
 			position="sticky"
 			px="10px"
 			py="20px"

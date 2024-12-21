@@ -1,7 +1,7 @@
 import { Box, Flex } from '@/generated/styled-system/jsx'
 import { ReactNode } from 'react'
 
-export function AltColumn({ children }: { children: ReactNode }) {
+export function SectionColumn({ children }: { children: ReactNode }) {
 	return (
 		<Flex alignItems="center" flexDirection="column" py="10px" width="100%">
 			<Flex direction="column" width="100%">

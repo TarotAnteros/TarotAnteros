@@ -7,7 +7,7 @@ export function Overlay({
 }: BoxProps & { children: ReactNode }) {
 	return (
 		<Box
-			backgroundColor="c0"
+			backgroundColor="bg0"
 			bottom="0"
 			left="0"
 			position="fixed"

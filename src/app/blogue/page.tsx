@@ -65,11 +65,11 @@ function Post({ post }: { post: TPost }) {
 			className={clsx(
 				css({
 					alignItems: 'center',
-					borderColor: 'c4',
+					borderColor: 'text',
 					borderRadius: '5px',
 					borderStyle: 'solid',
 					borderWidth: '1px',
-					color: 'c2',
+					color: 'link',
 					display: 'flex',
 					flexDirection: 'row',
 					fontWeight: 'bold',
@@ -134,7 +134,7 @@ function RSSLink() {
 		<a
 			className={css({
 				alignItems: 'center',
-				color: 'c2',
+				color: 'link',
 				display: 'flex',
 				gap: '5px',
 			})}
@@ -142,7 +142,7 @@ function RSSLink() {
 			rel="noreferrer"
 			target="_blank"
 		>
-			<Box className={css({ fontSize: '80%' })}>RSS</Box>
+			<Box fontSize="small">RSS</Box>
 			<FaRss size="20px" />
 		</a>
 	)

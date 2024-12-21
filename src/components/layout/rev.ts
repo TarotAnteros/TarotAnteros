@@ -2,9 +2,9 @@ import { css } from '@/generated/styled-system/css'
 
 export const rev = css({
 	'&:hover': {
-		backgroundColor: 'c2',
-		color: 'c0',
+		backgroundColor: 'link',
+		color: 'bg0',
 	},
-	color: 'c2',
+	color: 'link',
 	fontWeight: 'bold',
 })
