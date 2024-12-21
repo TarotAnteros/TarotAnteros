@@ -3,7 +3,7 @@ import { ReactNode } from 'react'
 
 export function AltColumn({ children }: { children: ReactNode }) {
 	return (
-		<Flex flexDirection="column" alignItems="center" py="10px" width="100%">
+		<Flex alignItems="center" flexDirection="column" py="10px" width="100%">
 			<Flex direction="column" width="100%">
 				{children}
 			</Flex>
@@ -20,11 +20,11 @@ export function Section({
 }) {
 	return (
 		<Flex
-			direction="column"
 			alignItems="center"
+			className={className}
+			direction="column"
 			px="10px"
 			py="1rem"
-			className={className}
 		>
 			<Box maxWidth="readable">{children}</Box>
 		</Flex>

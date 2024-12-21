@@ -1,6 +1,7 @@
-import { airtable } from './core'
-import { z } from 'zod'
 import slugify from '@sindresorhus/slugify'
+import { z } from 'zod'
+
+import { airtable } from './core'
 
 const textesDuSiteBase = airtable.base('appGoJm0yLoMjVSeC')
 
@@ -11,15 +12,15 @@ const schema = z.array(
 				createdTime: z.string(),
 			}),
 			fields: z.object({
-				Titre: z.string(),
-				Tags: z.array(z.string()).default([]),
 				Contenu: z.string(),
+				Tags: z.array(z.string()).default([]),
+				Titre: z.string(),
 				Vignette: z
 					.array(
 						z.object({
+							height: z.number(),
 							url: z.string(),
 							width: z.number(),
-							height: z.number(),
 						}),
 					)
 					.default([]),
@@ -27,8 +28,8 @@ const schema = z.array(
 		})
 		.transform((item) => ({
 			...item.fields,
-			slug: slugify(item.fields.Titre),
 			date: item._rawJson.createdTime,
+			slug: slugify(item.fields.Titre),
 		})),
 )
 

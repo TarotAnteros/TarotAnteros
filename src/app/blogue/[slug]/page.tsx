@@ -1,28 +1,28 @@
 import { blogueData } from '@/airtable/blogue'
-import { writeFile } from 'fs/promises'
-import RSS from 'rss'
 import { FormattedMd } from '@/components/formatted-md'
 import { buttonText } from '@/components/layout/button-text'
 import { H1 } from '@/components/layout/h1'
 import { MainColumn } from '@/components/layout/main-column'
+import { parseMD } from '@/components/md'
 import { css } from '@/generated/styled-system/css'
 import { Box } from '@/generated/styled-system/jsx'
+import { writeFile } from 'fs/promises'
 import RemoteImage from 'next-export-optimize-images/remote-image'
 import Link from 'next/link'
 import { IoIosArrowRoundBack } from 'react-icons/io'
-import { parseMD } from '@/components/md'
+import RSS from 'rss'
 
 function Back() {
 	return (
 		<Link
-			href="/blogue"
 			className={css({
+				alignItems: 'center',
+				color: 'c2',
 				display: 'flex',
 				flexDirection: 'row',
-				alignItems: 'center',
 				gap: '10px',
-				color: 'c2',
 			})}
+			href="/blogue"
 		>
 			<IoIosArrowRoundBack size="2rem" />
 			<Box className={buttonText}>articles du blogue</Box>
@@ -48,15 +48,15 @@ async function PostPage({ slug }: { slug: string }) {
 			</H1>
 			{vignette && (
 				<RemoteImage
-					src={vignette.url}
 					alt={post.Titre}
-					width={0}
-					height={0}
 					className={css({
-						width: '100vw',
 						height: '50vh',
 						objectFit: 'contain',
+						width: '100vw',
 					})}
+					height={0}
+					src={vignette.url}
+					width={0}
 				/>
 			)}
 			<Box>
@@ -81,19 +81,19 @@ const siteUrl = process.env.SITE_URL ?? 'http://localhost:3000'
 export async function generateStaticParams() {
 	const blogue = await blogueData
 	const feed = new RSS({
-		title: 'Tarot Anteros',
-		site_url: siteUrl,
 		// TODO: image_url
 		feed_url: `${siteUrl}/rss.xml`,
 		language: 'fr',
+		site_url: siteUrl,
+		title: 'Tarot Anteros',
 	})
 	await Promise.all(
 		blogue.map(async (post) => {
 			feed.item({
-				title: post.Titre,
-				description: await parseMD(post.Contenu),
-				url: `${siteUrl}/blogue/${post.slug}`,
 				date: new Date(post.date),
+				description: await parseMD(post.Contenu),
+				title: post.Titre,
+				url: `${siteUrl}/blogue/${post.slug}`,
 			})
 		}),
 	)

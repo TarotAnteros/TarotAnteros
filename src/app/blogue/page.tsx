@@ -1,5 +1,6 @@
 import { blogueData, TPost } from '@/airtable/blogue'
 import { FormattedMd } from '@/components/formatted-md'
+import { buttonText } from '@/components/layout/button-text'
 import { H1 } from '@/components/layout/h1'
 import { H2 } from '@/components/layout/h2'
 import { MainColumn } from '@/components/layout/main-column'
@@ -9,7 +10,6 @@ import clsx from 'clsx'
 import RemoteImage from 'next-export-optimize-images/remote-image'
 import Link from 'next/link'
 import { FaRss } from 'react-icons/fa'
-import { buttonText } from '@/components/layout/button-text'
 
 const firstItem = css({
 	'& > *': {
@@ -24,8 +24,8 @@ function FirstPost({ post }: { post: TPost }) {
 	return (
 		<Box
 			className={css({
-				borderWidth: '1px',
 				borderRadius: '5px',
+				borderWidth: '1px',
 				p: '10px',
 			})}
 		>
@@ -36,21 +36,21 @@ function FirstPost({ post }: { post: TPost }) {
 						<FormattedMd>{post.Contenu}</FormattedMd>
 					</Box>
 					<Box flexGrow={1} />
-					<Link href={`/blogue/${post.slug}`} className={buttonText}>
+					<Link className={buttonText} href={`/blogue/${post.slug}`}>
 						lire la suite
 					</Link>
 				</Flex>
 				<Flex align="center" justify="center" width="min(30ch, 50%)">
 					{post.Vignette[0] && (
 						<RemoteImage
-							src={post.Vignette[0].url}
 							alt={post.Titre}
-							width={0}
-							height={0}
 							className={css({
-								width: '100%',
 								objectFit: 'contain',
+								width: '100%',
 							})}
+							height={0}
+							src={post.Vignette[0].url}
+							width={0}
 						/>
 					)}
 				</Flex>
@@ -62,36 +62,36 @@ function FirstPost({ post }: { post: TPost }) {
 function Post({ post }: { post: TPost }) {
 	return (
 		<Link
-			href={`/blogue/${post.slug}`}
 			className={clsx(
 				css({
+					alignItems: 'center',
 					borderColor: 'c4',
+					borderRadius: '5px',
 					borderStyle: 'solid',
 					borderWidth: '1px',
-					borderRadius: '5px',
-					fontWeight: 'bold',
 					color: 'c2',
-					p: '10px',
 					display: 'flex',
 					flexDirection: 'row',
+					fontWeight: 'bold',
 					gap: '20px',
-					alignItems: 'center',
 					justifyContent: 'space-between',
+					p: '10px',
 				}),
 			)}
+			href={`/blogue/${post.slug}`}
 		>
 			<h2>{post.Titre}</h2>
 			<Flex align="center" justify="center" width="min(8ch, 13%)">
 				{post.Vignette[0] && (
 					<RemoteImage
-						src={post.Vignette[0].url}
 						alt={post.Titre}
-						width={0}
-						height={0}
 						className={css({
-							width: '100%',
 							objectFit: 'contain',
+							width: '100%',
 						})}
+						height={0}
+						src={post.Vignette[0].url}
+						width={0}
 					/>
 				)}
 			</Flex>
@@ -120,7 +120,7 @@ export default async function Page() {
 	const posts = await blogueData
 	return (
 		<MainColumn>
-			<Flex direction="row" align="center" justifyContent="space-between">
+			<Flex align="center" direction="row" justifyContent="space-between">
 				<H1>Blogue</H1>
 				<RSSLink />
 			</Flex>
@@ -132,15 +132,15 @@ export default async function Page() {
 function RSSLink() {
 	return (
 		<a
+			className={css({
+				alignItems: 'center',
+				color: 'c2',
+				display: 'flex',
+				gap: '5px',
+			})}
 			href="/rss.xml"
 			rel="noreferrer"
 			target="_blank"
-			className={css({
-				display: 'flex',
-				alignItems: 'center',
-				gap: '5px',
-				color: 'c2',
-			})}
 		>
 			<Box className={css({ fontSize: '80%' })}>RSS</Box>
 			<FaRss size="20px" />

@@ -1,22 +1,23 @@
 'use client'
 
-import { FaBars } from 'react-icons/fa'
-import * as Dialog from '@radix-ui/react-dialog'
-import { css } from '@/generated/styled-system/css'
 import { Overlay } from '@/components/layout/overlay'
-import { IoClose } from 'react-icons/io5'
+import { rev } from '@/components/layout/rev'
+import { css } from '@/generated/styled-system/css'
 import { Box, Flex, VisuallyHidden } from '@/generated/styled-system/jsx'
+import * as Dialog from '@radix-ui/react-dialog'
+import clsx from 'clsx'
 import Link from 'next/link'
 import { useState } from 'react'
+import { FaBars } from 'react-icons/fa'
+import { IoClose } from 'react-icons/io5'
+
 import { NavEntry } from './core'
-import clsx from 'clsx'
-import { rev } from '@/components/layout/rev'
 
 export function NavMenu({ entries }: { entries: NavEntry[] }) {
 	const [open, setOpen] = useState(false)
 	const close = () => setTimeout(() => setOpen(false), 300)
 	return (
-		<Dialog.Root open={open} onOpenChange={setOpen}>
+		<Dialog.Root onOpenChange={setOpen} open={open}>
 			<Dialog.Trigger
 				className={css({
 					display: 'flex',
@@ -31,17 +32,14 @@ export function NavMenu({ entries }: { entries: NavEntry[] }) {
 					<Dialog.Overlay asChild>
 						<Overlay>
 							<Flex
-								direction="column"
 								align="center"
-								justifyContent="center"
+								direction="column"
 								height="100%"
+								justifyContent="center"
 							>
 								<Flex direction="column">
-									{entries.map(({ URI, Titre: title }) => (
+									{entries.map(({ Titre: title, URI }) => (
 										<Link
-											href={URI}
-											key={URI}
-											onClick={close}
 											className={clsx(
 												rev,
 												css({
@@ -49,6 +47,9 @@ export function NavMenu({ entries }: { entries: NavEntry[] }) {
 													width: '100%',
 												}),
 											)}
+											href={URI}
+											key={URI}
+											onClick={close}
 										>
 											{title}
 										</Link>
@@ -62,11 +63,11 @@ export function NavMenu({ entries }: { entries: NavEntry[] }) {
 										<Dialog.Description>Navigation Menu</Dialog.Description>
 									</VisuallyHidden>
 									<Flex
+										className={rev}
 										direction="row"
 										justifyContent="flex-end"
-										py="20px"
 										px="10px"
-										className={rev}
+										py="20px"
 									>
 										<IoClose />
 									</Flex>

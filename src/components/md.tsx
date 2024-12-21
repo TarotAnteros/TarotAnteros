@@ -1,15 +1,15 @@
-import { unified } from 'unified'
+import { weakCached } from '@/utils/cached'
+import { ReactNode } from 'react'
+import * as prod from 'react/jsx-runtime'
+import rehypeReact, { Components } from 'rehype-react'
+import rehypeSanitize from 'rehype-sanitize'
+import rehypeStringify from 'rehype-stringify'
+import breaks from 'remark-breaks'
+import remarkGfm from 'remark-gfm'
 import parse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
-import rehypeReact, { Components } from 'rehype-react'
-import breaks from 'remark-breaks'
-import rehypeSanitize from 'rehype-sanitize'
-import * as prod from 'react/jsx-runtime'
-import { ReactNode } from 'react'
-import { weakCached } from '@/utils/cached'
 import remarkSmartypants from 'remark-smartypants'
-import remarkGfm from 'remark-gfm'
-import rehypeStringify from 'rehype-stringify'
+import { unified } from 'unified'
 
 function createParser() {
 	const parser = unified()
@@ -33,10 +33,10 @@ function createParser() {
 
 function getParser0(components: Partial<Components>) {
 	const parser = createParser().use(rehypeReact, {
+		components,
 		Fragment: prod.Fragment,
 		jsx: prod.jsx,
 		jsxs: prod.jsxs,
-		components,
 	})
 	return parser
 }
@@ -44,11 +44,11 @@ const getParser = weakCached(getParser0)
 
 const simple = {}
 export async function MD({
-	components,
 	children,
+	components,
 }: {
-	components?: Partial<Components>
 	children: string
+	components?: Partial<Components>
 }) {
 	const parser = getParser(components ?? simple)
 	const { result } = await parser.process(children)
@@ -66,5 +66,5 @@ export async function parseMD(md: string) {
 
 const frag = { p: Frag }
 export function MDFrag({ children }: { children: string }) {
-	return MD({ components: frag, children })
+	return MD({ children, components: frag })
 }

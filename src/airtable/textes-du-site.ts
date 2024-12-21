@@ -1,5 +1,6 @@
-import { airtable } from './core'
 import { z } from 'zod'
+
+import { airtable } from './core'
 
 const textesDuSiteBase = airtable.base('appGoJm0yLoMjVSeC')
 
@@ -7,9 +8,9 @@ const schema = z.array(
 	z
 		.object({
 			fields: z.object({
-				URI: z.string(),
-				Titre: z.string(),
 				Contenu: z.string(),
+				Titre: z.string(),
+				URI: z.string(),
 			}),
 		})
 		.transform((item) => item.fields),

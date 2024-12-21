@@ -9,13 +9,13 @@ export function MainColumn({
 	className?: string
 }) {
 	return (
-		<Flex flexDirection="column" alignItems="center" p="10px" width="100%">
+		<Flex alignItems="center" flexDirection="column" p="10px" width="100%">
 			<Flex
-				direction="column"
-				width="100%"
-				maxWidth="readable"
-				gap="2rem"
 				className={className}
+				direction="column"
+				gap="2rem"
+				maxWidth="readable"
+				width="100%"
 			>
 				{children}
 			</Flex>
