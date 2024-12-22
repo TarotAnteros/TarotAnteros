@@ -15,13 +15,13 @@ import RSS from 'rss'
 function Back() {
 	return (
 		<A
-			className={css({
+			css={{
 				alignItems: 'center',
 				display: 'flex',
 				flexDirection: 'row',
 				gap: '5px',
 				textStyle: 'button',
-			})}
+			}}
 			href="/blogue"
 		>
 			<IoIosArrowRoundBack size="2rem" />
@@ -40,9 +40,9 @@ async function PostPage({ slug }: { slug: string }) {
 	return (
 		<MainColumn>
 			<H1
-				className={css({
+				css={{
 					textAlign: 'center',
-				})}
+				}}
 			>
 				{post.Titre}
 			</H1>

@@ -50,20 +50,14 @@ function FirstPost({ post }: { post: TPost }) {
 				justify="space-between"
 			>
 				<VStack alignItems="start" gap="0px" justify="space-between">
-					<H2
-            textAlign={{ base: 'center', md: 'start' }}
-            width="100%"
-          >
+					<H2 textAlign={{ base: 'center', md: 'start' }} width="100%">
 						{post.Titre}
 					</H2>
 					<Box className={firstItem}>
 						<FormattedMd>{post.Contenu}</FormattedMd>
 					</Box>
 					<Box flexGrow={1} />
-					<A
-						className={css({ textStyle: 'button' })}
-						href={`/blogue/${post.slug}`}
-					>
+					<A css={{ textStyle: 'button' }} href={`/blogue/${post.slug}`}>
 						lire la suite
 					</A>
 				</VStack>
@@ -90,13 +84,13 @@ function Post({ post }: { post: TPost }) {
 	return (
 		<A href={`/blogue/${post.slug}`}>
 			<Card
-				className={css({
+				css={{
 					alignItems: 'center',
 					display: 'flex',
 					flexDirection: 'row',
 					gap: '20px',
 					justifyContent: 'space-between',
-				})}
+				}}
 			>
 				<h2>{post.Titre}</h2>
 				<VStack width="min(8ch, 13%)">
@@ -151,12 +145,12 @@ export default async function Page() {
 function RSSLink() {
 	return (
 		<A
-			className={css({
+			css={{
 				alignItems: 'start',
 				display: 'flex',
 				gap: '5px',
 				textStyle: 'button',
-			})}
+			}}
 			href="/rss.xml"
 			rel="noreferrer"
 		>
