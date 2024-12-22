@@ -5,7 +5,13 @@ import { H2 } from '@/components/elements/h2'
 import { MainColumn } from '@/components/layouts/main-column'
 import { FormattedMd } from '@/components/md/formatted'
 import { css } from '@/generated/styled-system/css'
-import { Box, HStack, styled, VStack } from '@/generated/styled-system/jsx'
+import {
+	Box,
+	Flex,
+	HStack,
+	styled,
+	VStack,
+} from '@/generated/styled-system/jsx'
 import RemoteImage from 'next-export-optimize-images/remote-image'
 import { FaRss } from 'react-icons/fa'
 
@@ -15,6 +21,14 @@ const firstItem = css({
 	},
 	'& > *:first-child': {
 		display: 'block',
+	},
+})
+
+const FocusCard = styled('div', {
+	base: {
+		borderRadius: '5px',
+		borderWidth: { base: '0px', md: '1px' },
+		p: '10px',
 	},
 })
 
@@ -28,10 +42,20 @@ const Card = styled('div', {
 
 function FirstPost({ post }: { post: TPost }) {
 	return (
-		<Card>
-			<HStack alignItems="stretch" gap="20px" justify="space-between">
+		<FocusCard>
+			<Flex
+				alignItems="stretch"
+				direction={{ base: 'column-reverse', md: 'row' }}
+				gap={{ base: '40px', md: '20px' }}
+				justify="space-between"
+			>
 				<VStack alignItems="start" gap="0px" justify="space-between">
-					<H2>{post.Titre}</H2>
+					<H2
+            textAlign={{ base: 'center', md: 'start' }}
+            width="100%"
+          >
+						{post.Titre}
+					</H2>
 					<Box className={firstItem}>
 						<FormattedMd>{post.Contenu}</FormattedMd>
 					</Box>
@@ -43,7 +67,7 @@ function FirstPost({ post }: { post: TPost }) {
 						lire la suite
 					</A>
 				</VStack>
-				<VStack width="min(30ch, 50%)">
+				<VStack justify="center" minWidth="40%">
 					{post.Vignette[0] && (
 						<RemoteImage
 							alt={post.Titre}
@@ -57,8 +81,8 @@ function FirstPost({ post }: { post: TPost }) {
 						/>
 					)}
 				</VStack>
-			</HStack>
-		</Card>
+			</Flex>
+		</FocusCard>
 	)
 }
 
@@ -128,7 +152,7 @@ function RSSLink() {
 	return (
 		<A
 			className={css({
-				alignItems: 'center',
+				alignItems: 'start',
 				display: 'flex',
 				gap: '5px',
 				textStyle: 'button',

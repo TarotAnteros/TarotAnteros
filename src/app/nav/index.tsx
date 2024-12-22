@@ -1,7 +1,7 @@
 import { textesDuSiteData } from '@/airtable/textes-du-site'
 import { A } from '@/components/elements/a'
 import { css } from '@/generated/styled-system/css'
-import { Box, Cq, HStack, styled } from '@/generated/styled-system/jsx'
+import { Box, HStack, styled } from '@/generated/styled-system/jsx'
 
 import { NavEntry } from './core'
 import { NavMenu } from './menu'
@@ -12,14 +12,7 @@ function NavBar({ entries }: { entries: NavEntry[] }) {
 		<HStack gap="0px" justify="center">
 			{entries.map(({ Titre: title, URI }) => (
 				<A
-					className={css(
-						{
-							borderRadius: '5px',
-							p: '10px',
-							textAlign: 'center',
-						},
-						navItem,
-					)}
+					className={css({ borderRadius: '5px' }, navItem)}
 					href={URI}
 					key={URI}
 				>
@@ -38,21 +31,14 @@ export async function Navigation() {
 	}))
 	entries.push({ Titre: 'Blogue', URI: '/blogue' })
 	return (
-		<Cq
-			backgroundColor="bg0"
-			position="sticky"
-			px="10px"
-			py="20px"
-			top="0"
-			width="100%"
-		>
-			<Box display={{ '@/menu': 'none', base: 'block' }}>
+		<Box bg="bg0" position="sticky" px="10px" py="20px" top="0" width="100%">
+			<Box display={{ base: 'block', lg: 'none' }}>
 				<NavMenu entries={entries} />
 			</Box>
-			<Box display={{ '@/menu': 'block', base: 'none' }}>
+			<Box display={{ base: 'none', lg: 'block' }}>
 				<NavBar entries={entries} />
 			</Box>
-		</Cq>
+		</Box>
 	)
 }
 

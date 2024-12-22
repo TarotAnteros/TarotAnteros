@@ -32,7 +32,7 @@ async function Sections() {
 					<Section
 						className={clsx({
 							[css({
-								backgroundColor: 'c2/30',
+								bg: 'c2/30',
 							})]: i % 2,
 						})}
 					>

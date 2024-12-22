@@ -38,7 +38,7 @@ export default function RootLayout({
 						color: 'link',
 						fontWeight: 'bold',
 					},
-					backgroundColor: 'bg0',
+					bg: 'bg0',
 					color: 'text',
 					fontFamily: 'text',
 					fontSize: '130%',

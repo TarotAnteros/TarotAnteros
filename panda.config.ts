@@ -17,6 +17,10 @@ export default defineConfig({
 	presets: ['@pandacss/preset-base'],
 	theme: {
 		extend: {
+			breakpoints: {
+				lg: '900px',
+				md: '600px',
+			},
 			containerSizes: {
 				menu: '44em',
 			},
