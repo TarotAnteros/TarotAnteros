@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Tarot Anteros]]></title>
+        <description><![CDATA[Tarot Anteros]]></description>
+        <link>http://localhost:3000</link>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Wed, 15 Jan 2025 21:33:13 GMT</lastBuildDate>
+        <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
+        <language><![CDATA[fr]]></language>
+        <item>
+            <title><![CDATA[Le Caca]]></title>
+            <description><![CDATA[<p><strong>La diarrhée est un symptôme, et non pas une maladie.</strong> On la définit comme le passage fréquent (3 fois par jour ou plus) de selles molles ou liquides. La forme aiguë dure moins de 14 jours (habituellement, seulement quelques jours), disparaît spontanément et n'est habituellement pas sérieuse, mais elle peut être associée à certains autres problèmes. La diarrhée peut toucher les personnes de tout âge, et certaines formes sont très infectieuses. Tout le monde souffre d'une diarrhée aiguë 4 fois par an en moyenne, et les effets à long terme sont rares.</p>
+<p>Caca prout prout prout pipi <strong>poil</strong>!</p>
+<blockquote>
+<p>Bouser. Chiasse. <del>Maturité</del>.</p>
+</blockquote>
+<p>La diarrhée chronique dure plus de 4 semaines. Elle peut être causée par un trouble inflammatoire de l'intestin tel que la colite ulcéreuse ou la maladie de Crohn.</p>
+<p>Les enfants et les nourrissons atteints d'une diarrhée faudra peut-être être examinés par un médecin.</p>]]></description>
+            <link>http://localhost:3000/blogue/le-caca</link>
+            <guid isPermaLink="true">http://localhost:3000/blogue/le-caca</guid>
+            <pubDate>Thu, 19 Dec 2024 22:09:59 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Le Pipi]]></title>
+            <description><![CDATA[<p>Pipi flic flac floc ohhh pipi.</p>]]></description>
+            <link>http://localhost:3000/blogue/le-pipi</link>
+            <guid isPermaLink="true">http://localhost:3000/blogue/le-pipi</guid>
+            <pubDate>Thu, 19 Dec 2024 22:25:45 GMT</pubDate>
+        </item>
+    </channel>
+</rss>

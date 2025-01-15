@@ -3,7 +3,7 @@ import { css } from '@/generated/styled-system/css'
 import './globals.css'
 
 import { Box } from '@/generated/styled-system/jsx'
-import { siteTitle } from '@/utils/meta'
+import { siteTitle } from '@/meta'
 import clsx from 'clsx'
 import localFont from 'next/font/local'
 

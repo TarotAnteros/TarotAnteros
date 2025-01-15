@@ -21,9 +21,6 @@ export default defineConfig({
 				lg: '900px',
 				md: '600px',
 			},
-			containerSizes: {
-				menu: '44em',
-			},
 			textStyles: {
 				button: {
 					value: {
