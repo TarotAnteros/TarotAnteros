@@ -42,41 +42,41 @@ const Card = styled('div', {
 
 function FirstPost({ post }: { post: TPost }) {
 	return (
-		<FocusCard>
-			<Flex
-				alignItems="stretch"
-				direction={{ base: 'column-reverse', md: 'row' }}
-				gap={{ base: '40px', md: '20px' }}
-				justify="space-between"
-			>
-				<VStack alignItems="start" gap="0px" justify="space-between">
-					<H2 textAlign={{ base: 'center', md: 'start' }} width="100%">
-						{post.Titre}
-					</H2>
-					<Box className={firstItem}>
-						<FormattedMd>{post.Contenu}</FormattedMd>
-					</Box>
-					<Box flexGrow={1} />
-					<A css={{ textStyle: 'button' }} href={`/blogue/${post.slug}`}>
-						lire la suite
-					</A>
-				</VStack>
-				<VStack justify="center" minWidth="40%">
-					{post.Vignette[0] && (
-						<RemoteImage
-							alt={post.Titre}
-							className={css({
-								objectFit: 'contain',
-								width: '100%',
-							})}
-							height={0}
-							src={post.Vignette[0].url}
-							width={0}
-						/>
-					)}
-				</VStack>
-			</Flex>
-		</FocusCard>
+		<a href={`/blogue/${post.slug}`}>
+			<FocusCard>
+				<Flex
+					alignItems="stretch"
+					direction={{ base: 'column-reverse', md: 'row' }}
+					gap={{ base: '40px', md: '20px' }}
+					justify="space-between"
+				>
+					<VStack alignItems="start" gap="0px" justify="space-between">
+						<H2 textAlign={{ base: 'center', md: 'start' }} width="100%">
+							{post.Titre}
+						</H2>
+						<Box className={firstItem}>
+							<FormattedMd>{post.Contenu}</FormattedMd>
+						</Box>
+						<Box flexGrow={1} />
+						<Box css={{ textStyle: 'button' }}>lire la suite</Box>
+					</VStack>
+					<VStack justify="center" minWidth="40%">
+						{post.Vignette[0] && (
+							<RemoteImage
+								alt={post.Titre}
+								className={css({
+									objectFit: 'contain',
+									width: '100%',
+								})}
+								height={0}
+								src={post.Vignette[0].url}
+								width={0}
+							/>
+						)}
+					</VStack>
+				</Flex>
+			</FocusCard>
+		</a>
 	)
 }
 
