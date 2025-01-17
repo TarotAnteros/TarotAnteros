@@ -13,6 +13,7 @@ import {
 	VStack,
 } from '@/generated/styled-system/jsx'
 import RemoteImage from 'next-export-optimize-images/remote-image'
+import Link from 'next/link'
 import { FaRss } from 'react-icons/fa'
 
 const firstItem = css({
@@ -42,7 +43,7 @@ const Card = styled('div', {
 
 function FirstPost({ post }: { post: TPost }) {
 	return (
-		<a href={`/blogue/${post.slug}`}>
+		<Link href={`/blogue/${post.slug}`}>
 			<FocusCard>
 				<Flex
 					alignItems="stretch"
@@ -76,7 +77,7 @@ function FirstPost({ post }: { post: TPost }) {
 					</VStack>
 				</Flex>
 			</FocusCard>
-		</a>
+		</Link>
 	)
 }
 
